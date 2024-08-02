@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="main">
+  <div class="container-fluid">
+     <div class="row mt-5 mb-3 p-3">
+         <div class="col-12">
+             <h2 class="section-title">
+                 <span>Авторизация</span>
+             </h2> 
+         </div>
+         <div class="row ">
+           <div class="col-md-4 offset-md-4">
+
+            <form action="{% url "user:login" %}" method="post">
+              {% csrf_token %}
+             
+               <input type="hidden" name="next" value="{{ next}}"> 
+             
+             <div class="mb-3 mt-2">
+                 <label for="id_username" class="form-label">Имя</label>
+                 <input type="text" class="form-control" id="id_username" placeholder="Введите ваше имя" required>
+               </div>
+               <div class="mb-3">
+                 <label for="id_password" class="form-label">Пароль</label>
+                 <input type="password" class="form-control" id="id_password" placeholder="Введите пароль" required>
+               </div>
+               <p ><a href="#" class="pass">Забыли пароль?</a><a href="{% url "user:registration" %}" class="reg">Регистрация</a></p>
+               <div class="mb-3">
+                 <button type="submit" class="btn btn-danger">Войти</button>
+               </div>
+            </form>
+           </div>
+         </div>
+     </div>
+  </div>
+</main>
+{% endblock  %}
+

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="main">
+  <div class="container-fluid">
+     <div class="row mt-5 mb-3 p-3">
+         <div class="col-12">
+             <h2 class="section-title">
+                 <span>Регистрация</span>
+             </h2> 
+         </div>
+         <div class="row">
+           <div class="col-md-6 offset-md-3">
+
+             <form class="row g-3 mt-2 " action="{% url "user:registration" %}" method="post">
+              {% csrf_token %}
+
+               <div class="col-md-6">
+                 <label for="id_first_name" class="form-label required">Имя</label>
+                 <input type="text" class="form-control" id="id_first_name" placeholder="Введите ваше имя">
+                 {% if form.first_name.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
+                 {% endif %}
+               </div>
+               <div class="col-md-6">
+                 <label for="id_last_name" class="form-label required">Фамилия</label>
+                 <input type="text" class="form-control" id="id_last_name" placeholder="Введите вашу фамилию">
+                 {% if form.last_name.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
+                 {% endif %}
+               </div>
+               <div class="col-md-6">
+                 <label for="id_email" class="form-label ">Email </label>
+                 <input type="email" class="form-control" id="id_email" placeholder="Введите ваш email *youremail@example.com" required>
+                 {% if form.email.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
+                 {% endif %}
+               </div>
+               <div class="col-md-6">
+                 <label for="id_phone_number" class="form-label required">Телефон</label>
+                 <input type="tel" class="form-control" id="id_phone_number" placeholder="Введите ваш телефон +7-000-000-00-00">
+                 {% if form.phone_number.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.phone_number.errors}}</div>
+                 {% endif %}
+               </div>
+               <div class="col-md-6">
+                 <label for="id_password1" class="form-label required">Пароль</label>
+                 <input type="password" class="form-control" id="id_password1" placeholder="Введите ваш пароль">
+                 {% if form.password1.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.password1.errors}}</div>
+                 {% endif %}
+               </div>
+               <div class="col-md-6">
+                 <label for="id_password2" class="form-label required">Повтор пароля</label>
+                 <input type="password" class="form-control" id="id_password2" placeholder="Подтвердите пароль">
+                 {% if form.password2.errors %}
+                 <div class="alert alert-danger alert-dismissible fade show">{{form.password2.errors}}</div>
+                 {% endif %}
+               </div>
+            
+               <div class="col-12">
+                 <button type="submit" class="btn btn-danger">Отправить</button>
+               </div>
+             </form>
+           </div>
+         </div>
+     </div>
+  </div>
+</main>
+{% endblock  %}
+
+
